@@ -10,22 +10,23 @@ namespace NetCoreConsoleTest
         {
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
-            Console.WriteLine("...........网购处理过程............");
+            //Console.WriteLine("...........网购处理过程............");
 
             //string sn = $"WG{DateTime.Now.ToString("yyyMMddHHmmssfffffff")}";
-            Console.WriteLine("...........处理订单............");
-            System.Threading.Thread.Sleep(TimeSpan.FromSeconds(1));
+            //Console.WriteLine("...........处理订单............");
+            //Console.WriteLine($"订单 {sn} 处理完成");
+            //System.Threading.Thread.Sleep(TimeSpan.FromSeconds(1));
 
             #region 一般使用
 
-            //Console.WriteLine("...........订单处理完成............");
+            //Console.WriteLine(".......................");
             //Console.WriteLine("...........处理订单积分............");
             //Order order = new Order();
             //order.AddOrder(sn);
-
+            //Console.WriteLine(".......................");
             //Console.WriteLine("...........处理订单发送短息............");
             //SMS sMS = new SMS();
-            //sMS.AddSMS(sn); 
+            //sMS.AddSMS(sn);
             #endregion
 
             #region pub sub 订阅发布
@@ -35,8 +36,12 @@ namespace NetCoreConsoleTest
             {
                 sn = $"WG{DateTime.Now.ToString("yyyMMddHHmmssfffffff")}";
                 Console.WriteLine($"生成第 {i} 个订单，订单号：{sn}");
+                Console.WriteLine("...........处理订单............");
+                Console.WriteLine($"订单 {sn} 处理完成");
+                System.Threading.Thread.Sleep(TimeSpan.FromSeconds(1));
+                //发布
                 subAndPub.Pub(sn);
-               
+
                 System.Threading.Thread.Sleep(TimeSpan.FromSeconds(1));
             }
             #endregion
@@ -51,14 +56,11 @@ namespace NetCoreConsoleTest
             //});
 
             ////multiplexer.GetSubscriber().Publish("pub_sub", "6666"); 
-            #endregion        
+            #endregion
 
-            Console.WriteLine("...........网购完成............");
             stopwatch.Stop();
             Console.WriteLine($"...........网购完成，总共用时{stopwatch.ElapsedMilliseconds}............");
             Console.ReadKey();
         }
-
-
     }
 }
