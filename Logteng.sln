@@ -9,13 +9,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NetCoreConsoleTest", "NetCo
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SubAndPub", "SubAndPub", "{DD135D16-FEFF-4106-910F-E802793D7811}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderForm", "OrderForm\OrderForm\OrderForm.csproj", "{8C327C17-6268-4511-9148-BB118A3359EF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrderForm", "OrderForm\OrderForm\OrderForm.csproj", "{8C327C17-6268-4511-9148-BB118A3359EF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SMSForm", "SMSForm\SMSForm\SMSForm.csproj", "{4B0CD826-5C2E-48A0-915F-55EA4C7129BE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SMSForm", "SMSForm\SMSForm\SMSForm.csproj", "{4B0CD826-5C2E-48A0-915F-55EA4C7129BE}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RedisMQ", "RedisMQ", "{C50D2275-F9A7-44A7-B0B2-50C8110753DF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RedisMessageQueue", "RedisMessageQueue\RedisMessageQueue\RedisMessageQueue.csproj", "{60934EB5-0924-4ED5-9DFD-1E0BAEE65637}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RedisMessageQueue", "RedisMessageQueue\RedisMessageQueue\RedisMessageQueue.csproj", "{60934EB5-0924-4ED5-9DFD-1E0BAEE65637}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "redisClientJiFen", "ConsoleApp1\redisClientJiFen.csproj", "{C183AE41-B079-4552-A9E2-E059484024DF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,6 +45,10 @@ Global
 		{60934EB5-0924-4ED5-9DFD-1E0BAEE65637}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{60934EB5-0924-4ED5-9DFD-1E0BAEE65637}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{60934EB5-0924-4ED5-9DFD-1E0BAEE65637}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C183AE41-B079-4552-A9E2-E059484024DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C183AE41-B079-4552-A9E2-E059484024DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C183AE41-B079-4552-A9E2-E059484024DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C183AE41-B079-4552-A9E2-E059484024DF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -52,6 +58,7 @@ Global
 		{8C327C17-6268-4511-9148-BB118A3359EF} = {DD135D16-FEFF-4106-910F-E802793D7811}
 		{4B0CD826-5C2E-48A0-915F-55EA4C7129BE} = {DD135D16-FEFF-4106-910F-E802793D7811}
 		{60934EB5-0924-4ED5-9DFD-1E0BAEE65637} = {C50D2275-F9A7-44A7-B0B2-50C8110753DF}
+		{C183AE41-B079-4552-A9E2-E059484024DF} = {C50D2275-F9A7-44A7-B0B2-50C8110753DF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {28D06482-E373-43EA-B911-C15EFE7EC949}
