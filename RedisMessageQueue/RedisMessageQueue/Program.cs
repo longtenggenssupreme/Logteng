@@ -61,7 +61,7 @@ namespace RedisMessageQueue
             //    }
             //    System.Threading.Thread.Sleep(TimeSpan.FromSeconds(1));
             //}
-            Console.ReadKey();
+            //Console.ReadKey();
         }
     }
 }
