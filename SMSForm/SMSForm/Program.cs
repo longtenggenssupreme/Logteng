@@ -50,6 +50,7 @@ namespace SMSForm
                     throw new ArgumentException(message: "invalid enum value", paramName: nameof(colorBand));
             };
         }
+    }
 
     public enum Rainbow
     {
