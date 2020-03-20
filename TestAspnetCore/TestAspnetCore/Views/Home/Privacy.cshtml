@@ -1,0 +1,22 @@
+﻿@{
+    ViewData["Title"] = "Privacy Policy";
+}
+<h1>@ViewData["Title"]</h1>
+@*//这是使用缓存*@
+<h1>@ViewBag.ss</h1>
+
+@*//这是使用自定义缓存*@
+<h1>@ViewBag.myCustomCache</h1>
+
+@*//这是使用分布式缓存*@
+<h1>@ViewBag.distributed</h1>
+
+
+@*//这是redis缓存*@
+<h1>@ViewBag.rediscache</h1>
+
+@*//这是sqlserver缓存*@
+<h1>@ViewBag.qlservercache</h1>
+
+<p>Use this page to detail your site's privacy policy.</p>
+
