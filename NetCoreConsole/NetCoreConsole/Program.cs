@@ -5,6 +5,8 @@ using Microsoft.Extensions.Logging;
 using System.Linq;
 using System.Diagnostics;
 using Microsoft.EntityFrameworkCore.Storage;
+using NLog;
+using NLog.Config;
 
 //Microsoft.EntityFrameworkCore //EFCore 
 //Microsoft.Extensions.Logging  // 日志
@@ -19,8 +21,25 @@ namespace NetCoreConsole
 {
     class Program
     {
+        //public static Logger logger = LogManager.GetLogger("Program");
         static void Main(string[] args)
         {
+            //LogManager.Configuration = new XmlLoggingConfiguration(nlogPath);
+            //NLog.Config.XmlLoggingConfiguration.SetCandidateConfigFilePaths(@"F:\Person\linjie\Logteng\NetCoreConsole\NetCoreConsole\NLog.config");
+            //NLog.Web.NLogBuilder.ConfigureNLog(nlogPath);//nlog加载配置文件
+            //用于查看彩色控制台样式，以及日志等级过滤
+            //1、默认加载NLog.config配置文件，不过这个文件要设置，复制到输出目录：始终复制生成操作：内容
+            //2、也可以加载指定目录的配置文件
+            LogManager.Configuration = new XmlLoggingConfiguration(@"F:\Person\linjie\Logteng\NetCoreConsole\NetCoreConsole\NLog.config");
+            var logger = LogManager.GetCurrentClassLogger();
+            logger.Trace("Test For Trace");
+            logger.Debug("Test For Debug");
+            logger.Info("Test For Info");
+            logger.Warn("Test For Warn");
+            logger.Error("Test For Error", new Exception("sss"));
+            logger.Fatal("Test For Fatal", new Exception("sss"));
+
+
             Console.WriteLine("测试  EF core ");
             BlogContext blogContext = new BlogContext();
 
