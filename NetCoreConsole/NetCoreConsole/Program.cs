@@ -22,6 +22,7 @@ namespace NetCoreConsole
     class Program
     {
         //public static Logger logger = LogManager.GetLogger("Program");
+
         static void Main(string[] args)
         {
             #region NLog
