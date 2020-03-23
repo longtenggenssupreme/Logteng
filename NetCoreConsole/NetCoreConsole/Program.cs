@@ -13,6 +13,8 @@ using Microsoft.EntityFrameworkCore.Storage;
 //Microsoft.EntityFrameworkCore.Proxies// 懒加载，延迟加载，EFCore没有懒加载，使用该库，可以实现懒加载
 //Microsoft.EntityFrameworkCore.SqlServer//EFCore使用的SqlServer数据库
 //Pomelo.EntityFrameworkCore.MySql//EFCore使用的MySql数据库
+
+
 namespace NetCoreConsole
 {
     class Program
