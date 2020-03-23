@@ -6,6 +6,13 @@ using System.Linq;
 using System.Diagnostics;
 using Microsoft.EntityFrameworkCore.Storage;
 
+//Microsoft.EntityFrameworkCore //EFCore 
+//Microsoft.Extensions.Logging  // 日志
+//Microsoft.Extensions.Logging.Console // 日志输出到Console控制台
+//Microsoft.Extensions.Logging.Debug  // 日志输出到调试Debug
+//Microsoft.EntityFrameworkCore.Proxies// 懒加载，延迟加载，EFCore没有懒加载，使用该库，可以实现懒加载
+//Microsoft.EntityFrameworkCore.SqlServer//EFCore使用的SqlServer数据库
+//Pomelo.EntityFrameworkCore.MySql//EFCore使用的MySql数据库
 namespace NetCoreConsole
 {
     class Program
@@ -14,11 +21,14 @@ namespace NetCoreConsole
         {
             Console.WriteLine("测试  EF core ");
             BlogContext blogContext = new BlogContext();
+
+            #region ef 数据库的创建和删除
             //Console.WriteLine("删除数据库");
             //blogContext.Database.EnsureDeleted();
             //Console.WriteLine("添加数据库");            
             blogContext.Database.EnsureCreated();
-            //Console.WriteLine("添加数据库成功");
+            //Console.WriteLine("添加数据库成功"); 
+            #endregion
 
             #region 数据迁移相关
             //IEnumerable<string> vs = blogContext.Database.GetMigrations();
@@ -157,28 +167,28 @@ namespace NetCoreConsole
 
             //普通查询
 
-            //Func<BlogContext, Blog> unCompileQuery = context => context.Blog.Include(c => c.Posts).Where(a => a.BlogId == 1).FirstOrDefault();
-            //Stopwatch stopwatch = new Stopwatch();
-            //stopwatch.Start();
-            //Console.WriteLine("普通查询开始");
-            //for (int i = 0; i < 100000; i++)
-            //{
-            //    var a = unCompileQuery(blogContext);
-            //}          
-            //stopwatch.Stop();
-            //Console.WriteLine($"编译查询 用时：{stopwatch.ElapsedMilliseconds} 毫秒");
-
-            //编译查询 一般是大量数据查询，并且参数不变的情况下比较好，但是不能返回集合
+            Func<BlogContext, Blog> unCompileQuery = context => context.Blog.Include(c => c.Posts).Where(a => a.BlogId == 1).FirstOrDefault();
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
-            Console.WriteLine("编译查询开始");
-            var compileQuery = EF.CompileQuery((BlogContext context, int id) => context.Blog.Include(c => c.Posts).Where(a => a.BlogId == 1).FirstOrDefault());
+            Console.WriteLine("普通查询开始");
             for (int i = 0; i < 100000; i++)
             {
-                var item = compileQuery(blogContext, 1);
+                var a = unCompileQuery(blogContext);
             }
             stopwatch.Stop();
             Console.WriteLine($"编译查询 用时：{stopwatch.ElapsedMilliseconds} 毫秒");
+
+            //编译查询 一般是大量数据查询，并且参数不变的情况下比较好，但是不能返回集合
+            //Stopwatch stopwatch = new Stopwatch();
+            //stopwatch.Start();
+            //Console.WriteLine("编译查询开始");
+            //var compileQuery = EF.CompileQuery((BlogContext context, int id) => context.Blog.Include(c => c.Posts).Where(a => a.BlogId == 1).FirstOrDefault());
+            //for (int i = 0; i < 100000; i++)
+            //{
+            //    var item = compileQuery(blogContext, 1);
+            //}
+            //stopwatch.Stop();
+            //Console.WriteLine($"编译查询 用时：{stopwatch.ElapsedMilliseconds} 毫秒");
             #endregion
 
             //var item = blogContext.Post.Where(op => op.Title.Contains("10"));
@@ -201,7 +211,7 @@ namespace NetCoreConsole
     {
         public DbSet<Blog> Blog { get; set; }
         public DbSet<Post> Post { get; set; }
-        //public static readonly ILoggerFactory MyLoggerFactory = LoggerFactory.Create(builder => builder.AddConsole().AddDebug());
+
         public static readonly ILoggerFactory loggerFactory = LoggerFactory.Create(builder => builder.AddConsole().AddDebug());
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
