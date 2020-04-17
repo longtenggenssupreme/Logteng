@@ -27,9 +27,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".Net Cache", ".Net Cache", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestAspnetCore", "TestAspnetCore\TestAspnetCore\TestAspnetCore.csproj", "{23C23385-0860-41C4-8819-D6DD0CD340FB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetCoreConsole", "NetCoreConsole\NetCoreConsole\NetCoreConsole.csproj", "{B5F962FB-DC54-47DA-9109-5FAE08180001}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NetCoreConsole", "NetCoreConsole\NetCoreConsole\NetCoreConsole.csproj", "{B5F962FB-DC54-47DA-9109-5FAE08180001}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAppNETCore", "WebAppNETCore\WebAppNETCore\WebAppNETCore.csproj", "{97F5BC53-9BF4-4F0F-939B-6514868D8FB1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebAppNETCore", "WebAppNETCore\WebAppNETCore\WebAppNETCore.csproj", "{97F5BC53-9BF4-4F0F-939B-6514868D8FB1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebCore", "WebCore\WebCore\WebCore.csproj", "{E4DD6D9D-8B14-4C0D-852E-B9AA513279B9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -77,6 +79,10 @@ Global
 		{97F5BC53-9BF4-4F0F-939B-6514868D8FB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{97F5BC53-9BF4-4F0F-939B-6514868D8FB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{97F5BC53-9BF4-4F0F-939B-6514868D8FB1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E4DD6D9D-8B14-4C0D-852E-B9AA513279B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4DD6D9D-8B14-4C0D-852E-B9AA513279B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4DD6D9D-8B14-4C0D-852E-B9AA513279B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4DD6D9D-8B14-4C0D-852E-B9AA513279B9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
