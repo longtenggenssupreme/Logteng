@@ -18,6 +18,8 @@ using System.Text.Unicode;
 using System.Text;
 using Microsoft.Extensions.Localization;
 using System.Globalization;
+using Microsoft.AspNetCore.Http;
+using MyNetCore31Web.middleware;
 
 namespace MyNetCore31Web
 {
@@ -35,15 +37,17 @@ namespace MyNetCore31Web
         {
             //
             //services.AddDbContext<MyNetCore31WebContext>(options => options.UseSqlServer(Configuration.GetConnectionString("MyNetCore31WebContextConnection")));
-            //services.AddDbContext<MyNetCore31WebContext>(options => options.UseMySql(Configuration.GetConnectionString("MyNetCore31WebContextConnection")));
+            services.AddDbContext<MyNetCore31WebContext>(options => options.UseMySql(Configuration.GetConnectionString("MyNetCore31WebContextConnection")));
+
+            services.AddMyCustomService(option => option.UseMySql(""));
 
             services.AddLocalization();
             //services.AddSingleton<IStringLocalizer, LocalserviceProvider>();
-           services.AddSingleton<IStringLocalizer>((sp) =>
-            {
-                var sx = sp.GetRequiredService<IStringLocalizer<LocalserviceProvider>>();
-                return sx;
-            });
+            services.AddSingleton<IStringLocalizer>((sp) =>
+             {
+                 var sx = sp.GetRequiredService<IStringLocalizer<LocalserviceProvider>>();
+                 return sx;
+             });
 
             services.AddSingleton<Jwtextension>();
 
@@ -80,6 +84,8 @@ namespace MyNetCore31Web
                     return factory.Create(typeof(LocalserviceProvider));
                 };
             });
+
+            //services.AddScoped<MyCustomMiddleware>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -96,6 +102,18 @@ namespace MyNetCore31Web
                 app.UseHsts();
             }
 
+            //1¡¢app.Use(async (content,next) => { await content.Response.WriteAsync("1111");});
+            //2¡¢app.Use(async (content, next) =>
+            //{
+            //    await content.Response.WriteAsync("1111");
+            //    await next();
+            //    await content.Response.WriteAsync("112444");
+            //});
+            //3¡¢app.Run(a => a.Response.WriteAsync("222222"));
+            //app.UseMiddleware<MyCustomMiddleware>();
+            app.UseMyMiddleware();
+            app.Run(a => a.Response.WriteAsync("222222"));
+            //app.UseMiddleware(typeof(MyMiddleware));
             app.UseRequestLocalization(new RequestLocalizationOptions()
             {
                 //DefaultRequestCulture = new Microsoft.AspNetCore.Localization.RequestCulture("zh-Hans", "zh-Hans"),
