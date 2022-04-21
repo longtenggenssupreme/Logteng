@@ -53,10 +53,11 @@ namespace HttplistenerConsole
                 StreamReader reader = new StreamReader(request.InputStream, Encoding.UTF8);
                 var resultstring = reader.ReadToEnd();
                 //处理收到信息
-                Console.WriteLine($"收到前端信息");
+                Console.WriteLine($"哈哈----收到前端信息：{resultstring}");
                 //Console.WriteLine($"收到前端信息{request.FILES.get('image')}"); 
                 ExcuteResult result = new ExcuteResult();
-                byte[] senddata = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(result));
+                //byte[] senddata = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(result));
+                byte[] senddata = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(resultstring));
                 //处理信息之后返回信息
                 context.Response.AppendHeader("Access-Control-Allow-Origin", "*");//处理跨域Access-Control-Allow-Origin
                 context.Response.OutputStream.Write(senddata, 0, senddata.Length);
